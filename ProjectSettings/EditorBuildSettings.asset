@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartGame.unity
+    guid: 8d5a4fd5bd3b7a249a99e490b8190319
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/ChooseSpritePlayerVsBot.unity
+    guid: 1fe8835f20e403543b847a318b5a4076
+  - enabled: 1
+    path: Assets/Scenes/ChooseSpritePlayerVsBot2.unity
+    guid: 1954a0855fe84554ba90baca219093fb
+  - enabled: 1
+    path: Assets/Scenes/OnePlayer.unity
+    guid: 659a12f13b1522241933859f04429b64
+  - enabled: 1
+    path: Assets/Scenes/GameOverOnePlayer.unity
+    guid: 47655ccebb8d77447845d5c9c3e1301f
+  - enabled: 1
+    path: Assets/Scenes/TwoPlayers.unity
+    guid: c16f694beecd7af4593d75e93fdf354c
+  - enabled: 1
+    path: Assets/Scenes/GameOverTwoPlayers.unity
+    guid: b1408da382268584b894a3a5bc50f81f
+  - enabled: 1
+    path: Assets/Scenes/ChooseSpriteTwoPlayers.unity
+    guid: d3013ed4b7bcabd4c81c4b0fa558653a
+  - enabled: 1
+    path: Assets/Scenes/ChooseSpriteTwoPlayers2.unity
+    guid: 74c5bc65bc9e01642995fdd7c4ede4df
+  m_configObjects: {}
