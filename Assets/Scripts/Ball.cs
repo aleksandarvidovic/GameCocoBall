@@ -1,6 +1,3 @@
 using UnityEngine;
 
-public class Ball : MonoBehaviour
-{
-    //
-}
+public class Ball : MonoBehaviour {}

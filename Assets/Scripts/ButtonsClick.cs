@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class ButtonsClick : MonoBehaviour
 {
+    [SerializeField] private GameObject exitGame;
+    
     public static int playerSpriteId = 1;
     public static int botSpriteId = 1;
-    [SerializeField] private GameObject exitGame;
-
     private int maxSprites = 6;
 
     public void QuitGame()
@@ -18,7 +18,7 @@ public class ButtonsClick : MonoBehaviour
     public void NextPlayerSprite()
     {
         SoundManager.PlaySound("click");
-        
+
         if (playerSpriteId < maxSprites)
             playerSpriteId++;
         else
@@ -28,7 +28,7 @@ public class ButtonsClick : MonoBehaviour
     public void PreviousPlayerSprite()
     {
         SoundManager.PlaySound("click");
-        
+
         if (playerSpriteId > 1)
             playerSpriteId--;
         else
@@ -38,7 +38,7 @@ public class ButtonsClick : MonoBehaviour
     public void NextBotSprite()
     {
         SoundManager.PlaySound("click");
-        
+
         if (botSpriteId < maxSprites)
             botSpriteId++;
         else
@@ -48,7 +48,7 @@ public class ButtonsClick : MonoBehaviour
     public void PreviousBotSprite()
     {
         SoundManager.PlaySound("click");
-        
+
         if (botSpriteId > 1)
             botSpriteId--;
         else

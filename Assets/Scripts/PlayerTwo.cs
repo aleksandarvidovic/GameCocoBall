@@ -1,34 +1,39 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerTwo : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpForce;
 
     private SpriteRenderer sr;
     private Sprite s;
     private Rigidbody2D rb;
     private bool onSand;
+    private PhotonView view;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        SetSprite(ButtonsClick.botSpriteId);
+        SetSprite(6);
+        view = GetComponent<PhotonView>();
     }
     
     private void Update()
     {
-        if (CrossPlatformInputManager.GetButton("Left"))
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
-        else if (CrossPlatformInputManager.GetButton("Right"))
-            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
-        else
-            rb.velocity = new Vector2(0, rb.velocity.y);
-        
-        if(CrossPlatformInputManager.GetButtonDown("Up") && onSand)
-            rb.AddForce(Vector2.up * jumpForce);
+        if (view.IsMine)
+        {
+            if (CrossPlatformInputManager.GetButton("Left"))
+                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+            else if (CrossPlatformInputManager.GetButton("Right"))
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+            else
+                rb.velocity = new Vector2(0, rb.velocity.y);
+
+            if (CrossPlatformInputManager.GetButtonDown("Switch"))
+                view.RPC("SwitchSprite", RpcTarget.AllBuffered, null);
+        }
     }
 
     private void FixedUpdate()
@@ -82,5 +87,16 @@ public class PlayerTwo : MonoBehaviour
                 sr.sprite = s;
                 break;
         }
+    }
+    
+    [PunRPC]
+    void SwitchSprite()
+    {
+        if (ButtonsClick.botSpriteId > 1)
+            ButtonsClick.botSpriteId--;
+        else
+            ButtonsClick.botSpriteId = 6;
+                
+        SetSprite(ButtonsClick.botSpriteId);
     }
 }

@@ -30,9 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverTwoPlayers.unity
     guid: b1408da382268584b894a3a5bc50f81f
   - enabled: 1
-    path: Assets/Scenes/ChooseSpriteTwoPlayers.unity
-    guid: d3013ed4b7bcabd4c81c4b0fa558653a
-  - enabled: 1
-    path: Assets/Scenes/ChooseSpriteTwoPlayers2.unity
-    guid: 74c5bc65bc9e01642995fdd7c4ede4df
+    path: Assets/Scenes/TwoPlayersMenu.unity
+    guid: e118b76e15ce05549ad4fad4fd4790a6
   m_configObjects: {}

@@ -1,21 +1,15 @@
-using System.Collections;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameRulesTwo : MonoBehaviour
 {
     [SerializeField] private float centerX;
     [SerializeField] private float outPlayer;
     [SerializeField] private float outPlayer2;
-    [SerializeField] private GameObject loadingObjects;
-    [SerializeField] private Slider slider;
 
     private Rigidbody2D rb;
     private float serveX = -5.5f;
     private float serveY = 4.5f;
-    private Player player;
-    private PlayerTwo player2;
     private bool ballOnSand;
     public static int playerPoints;
     public static int player2Points;
@@ -28,13 +22,11 @@ public class GameRulesTwo : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = FindObjectOfType<Player>();
-        player2 = FindObjectOfType<PlayerTwo>();
     }
 
     private void FixedUpdate()
     {
-        if(playerPoints == maxPoints || player2Points == maxPoints)
+        if(playerPoints >= maxPoints || player2Points >= maxPoints)
             GameOver();
         
         if (ballOnSand)
@@ -116,8 +108,6 @@ public class GameRulesTwo : MonoBehaviour
 
     private void ServeBall()
     {
-        player.transform.position = new Vector3(-5, -2.2f);
-        player2.transform.position = new Vector3(5, -2.2f);
         rb.velocity = new Vector2(0, 0);
         rb.transform.SetPositionAndRotation(new Vector3(serveX, serveY), Quaternion.identity);
     }
@@ -126,23 +116,7 @@ public class GameRulesTwo : MonoBehaviour
     {
         playerPointsEnd = playerPoints;
         player2PointsEnd = player2Points;
-        StartCoroutine(LoadASync("GameOverTwoPlayers"));
-    }
-
-    IEnumerator LoadASync(string scene)
-    {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-
-        loadingObjects.SetActive(true);
-
-        while (!asyncOperation.isDone)
-        {
-            float progress = Mathf.Clamp01(asyncOperation.progress / .9f);
-
-            slider.value = progress;
-
-            yield return null;
-        }
+        PhotonNetwork.LoadLevel("GameOverTwoPlayers");
     }
 
     private void PlayerGetPoint()

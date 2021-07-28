@@ -21,10 +21,12 @@
       <Path>Library/PackageCache/com.unity.textmeshpro@3.0.1</Path>
       <Path>Library/PackageCache/com.unity.timeline@1.4.6</Path>
       <Path>Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@0.1.20-preview</Path>
+      <Path>Library/PackageCache/com.unity.toolchain.win-x86_64-linux-x86_64@0.1.21-preview</Path>
       <Path>Packages</Path>
       <Path>ProjectSettings</Path>
     </explicitIncludes>
     <explicitExcludes>
+      <Path>.git</Path>
       <Path>.idea</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
